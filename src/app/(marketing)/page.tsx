@@ -27,6 +27,13 @@ export default function HomePage() {
             </CTA>
           </div>
         </div>
+        <div className="w-full">
+          <img
+            src="https://www.unitree.com/images/7b830fccde8d41ac8e3fcec334e84735_3840x1988.jpg"
+            alt="Physical AI and robotics systems in real-world operations"
+            className="w-full h-auto max-h-[50vh] object-cover object-center"
+          />
+        </div>
       </section>
 
       {/* Physical AI Revolution */}
@@ -57,6 +64,13 @@ export default function HomePage() {
               infrastructure, safety systems, operational workflows, and
               workforce training. This is where [Company Name] comes in.
             </p>
+          </div>
+          <div className="mt-12 w-full overflow-hidden rounded-lg">
+            <img
+              src="https://www.unitree.com/images/7b830fccde8d41ac8e3fcec334e84735_3840x1988.jpg"
+              alt="Physical AI and robotics in real-world operations"
+              className="w-full h-auto max-h-[45vh] object-cover object-center"
+            />
           </div>
         </div>
       </section>
@@ -149,6 +163,38 @@ export default function HomePage() {
               View our partners →
             </Link>
           </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src="https://bostondynamics.com/wp-content/uploads/2023/04/spot-with-spot-cam-ir.jpg"
+                alt="Spot robot with thermal imaging for inspection"
+                className="h-56 w-full object-cover object-center"
+              />
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Spot: inspection and sensing in the field
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src="https://bostondynamics.com/wp-content/uploads/2025/12/atlas-home-2026-v2.jpg"
+                alt="Atlas humanoid robot"
+                className="h-56 w-full object-cover object-center"
+              />
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Atlas: next-generation humanoid robotics
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src="https://bostondynamics.com/wp-content/uploads/2026/01/atlas-render-blog.jpg"
+                alt="Atlas humanoid robot in industrial settings"
+                className="h-56 w-full object-cover object-center"
+              />
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Atlas: built for real-world deployment
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -158,6 +204,17 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
             Industries We Transform
           </h2>
+          <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
+            From logistics to healthcare, robotics and physical AI are reshaping
+            how industries operate.
+          </p>
+          <div className="mt-10 w-full overflow-hidden rounded-lg">
+            <img
+              src="https://www.unitree.com/images/2b9855f7c43845819ab6d8156c75aeea_3840x2143.jpg?x-oss-process=image/quality,q_60/format,webp"
+              alt="Robotics and physical AI across industries"
+              className="w-full h-auto max-h-[45vh] object-cover object-center"
+            />
+          </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
