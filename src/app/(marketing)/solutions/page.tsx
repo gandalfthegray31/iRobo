@@ -93,6 +93,19 @@ export default function SolutionsPage() {
             <p className="mt-4 text-zinc-600 dark:text-zinc-400">
               {sol.description}
             </p>
+            {sol.id === "humanoid" && (
+              <div className="mt-6 overflow-hidden rounded-lg">
+                <img
+                  src="https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/17/698770322690117.jpg"
+                  alt="UBTECH Walker S2 industrial humanoid robot"
+                  className="h-72 w-full object-cover object-center"
+                />
+                <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-500">
+                  Platforms we integrate: UBTECH Walker S2 and other leading
+                  humanoids.
+                </p>
+              </div>
+            )}
             <h3 className="mt-6 font-semibold text-zinc-900 dark:text-zinc-50">
               Applications
             </h3>

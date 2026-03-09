@@ -10,29 +10,33 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative border-b border-zinc-200 bg-gradient-to-b from-zinc-50 to-white dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl lg:text-6xl">
+      <section
+        className="relative min-h-[70vh] border-b border-zinc-200 dark:border-zinc-800"
+        style={{
+          backgroundImage: "url(https://www.unitree.com/images/7b830fccde8d41ac8e3fcec334e84735_3840x1988.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div
+          className="absolute inset-0 bg-zinc-900/60 dark:bg-zinc-950/70"
+          aria-hidden
+        />
+        <div className="relative mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Enterprise Robotics Integration for the Physical AI Era
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mt-6 max-w-2xl text-lg text-zinc-200">
             [Company Name] helps organizations deploy robots, humanoids, and
             autonomous systems into real-world operations — safely, efficiently,
             and at scale.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <CTA href="/contact">Book a Robotics Strategy Call</CTA>
-            <CTA href="/contact?interest=guide" variant="outline">
+            <CTA href="/contact?interest=guide" variant="outline-inverse">
               Download Physical AI Deployment Guide
             </CTA>
           </div>
-        </div>
-        <div className="w-full">
-          <img
-            src="https://www.unitree.com/images/7b830fccde8d41ac8e3fcec334e84735_3840x1988.jpg"
-            alt="Physical AI and robotics systems in real-world operations"
-            className="w-full h-auto max-h-[50vh] object-cover object-center"
-          />
         </div>
       </section>
 
@@ -66,11 +70,13 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mt-12 w-full overflow-hidden rounded-lg">
-            <img
-              src="https://www.unitree.com/images/7b830fccde8d41ac8e3fcec334e84735_3840x1988.jpg"
-              alt="Physical AI and robotics in real-world operations"
+            <video
+              src="https://owebsite-cdn.ubtrobot.com/resources/video/2025/07/23/700932933050437.mp4"
+              controls
               className="w-full h-auto max-h-[45vh] object-cover object-center"
-            />
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -192,6 +198,42 @@ export default function HomePage() {
               />
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                 Atlas: built for real-world deployment
+              </p>
+            </div>
+          </div>
+          <p className="mt-8 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            UBTECH Walker S2 — industrial humanoid with autonomous battery
+            swapping
+          </p>
+          <div className="mt-4 grid gap-6 sm:grid-cols-3">
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src="https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/17/698770322690117.jpg"
+                alt="UBTECH Walker S2 industrial humanoid robot"
+                className="h-56 w-full object-cover object-center"
+              />
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Walker S2: next-gen industrial humanoid
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src="https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/22/700558958612549.jpg"
+                alt="Walker S2 capabilities and deployment"
+                className="h-56 w-full object-cover object-center"
+              />
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Payload and workspace flexibility
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src="https://owebsite-cdn.ubtrobot.com/resources/image/2025/11/20/743380301672517.jpg"
+                alt="Walker S2 mass production and delivery"
+                className="h-56 w-full object-cover object-center"
+              />
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Mass production and delivery
               </p>
             </div>
           </div>
