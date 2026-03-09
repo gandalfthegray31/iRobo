@@ -41,16 +41,33 @@ export default function HomePage() {
       </section>
 
       {/* Physical AI Revolution */}
-      <section className="border-b border-zinc-200 py-16 dark:border-zinc-800 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+      <section className="relative min-h-[60vh] overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+          aria-hidden
+        >
+          <source
+            src="https://owebsite-cdn.ubtrobot.com/resources/video/2025/07/23/700932933050437.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div
+          className="absolute inset-0 bg-zinc-900/65 dark:bg-zinc-950/70"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <h2 className="text-3xl font-bold text-white">
             The Next Wave of AI is Physical
           </h2>
-          <div className="mt-6 max-w-3xl space-y-4 text-zinc-600 dark:text-zinc-400">
+          <div className="mt-6 max-w-3xl space-y-4 text-zinc-200">
             <p>
               Artificial Intelligence is no longer confined to software. Across
               logistics, manufacturing, healthcare, retail, and infrastructure,
-              organizations are deploying <strong>physical AI systems</strong> —
+              organizations are deploying <strong className="text-white">physical AI systems</strong> —
               robots, drones, autonomous machines, and humanoid assistants.
             </p>
             <p>These systems transform how work is performed:</p>
@@ -63,20 +80,11 @@ export default function HomePage() {
               <li>Smart manufacturing robotics</li>
             </ul>
             <p>
-              However, <strong>deploying robotics into real operations is complex</strong>.
+              However, <strong className="text-white">deploying robotics into real operations is complex</strong>.
               Organizations must integrate hardware, AI software, cloud
               infrastructure, safety systems, operational workflows, and
               workforce training. This is where [Company Name] comes in.
             </p>
-          </div>
-          <div className="mt-12 w-full overflow-hidden rounded-lg">
-            <video
-              src="https://owebsite-cdn.ubtrobot.com/resources/video/2025/07/23/700932933050437.mp4"
-              controls
-              className="w-full h-auto max-h-[45vh] object-cover object-center"
-            >
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </section>
