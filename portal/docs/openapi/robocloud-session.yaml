@@ -1,0 +1,246 @@
+openapi: 3.1.0
+info:
+  title: RoboCloud Session & Control Plane API (outline)
+  version: 0.1.0
+  description: >
+    REST outline for session lifecycle, WebRTC token minting, and artifacts.
+    Real-time control uses WebSockets; see TDD for message types.
+
+servers:
+  - url: https://api.robocloud.example/v1
+    description: Production (example host)
+
+tags:
+  - name: sessions
+  - name: recordings
+  - name: artifacts
+
+paths:
+  /sessions:
+    post:
+      tags: [sessions]
+      summary: Start a session from an existing booking
+      operationId: createSession
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [booking_id, safety_profile]
+              properties:
+                booking_id:
+                  type: string
+                safety_profile:
+                  type: string
+                  description: e.g. tabletop-only, industrial-bench
+      responses:
+        "201":
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Session"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /sessions/{sessionId}:
+    get:
+      tags: [sessions]
+      summary: Get session metadata and capabilities
+      operationId: getSession
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/sessionId"
+      responses:
+        "200":
+          description: Session
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Session"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /sessions/{sessionId}/tokens/realtime:
+    post:
+      tags: [sessions]
+      summary: Mint short-lived WebSocket session token
+      operationId: mintRealtimeToken
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/sessionId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                capabilities:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - observe
+                      - control_manual
+                      - control_api
+                      - terminal
+                      - export
+      responses:
+        "200":
+          description: Token for WS upgrade
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [token, expires_at]
+                properties:
+                  token:
+                    type: string
+                  expires_at:
+                    type: string
+                    format: date-time
+
+  /sessions/{sessionId}/tokens/webrtc:
+    post:
+      tags: [sessions]
+      summary: Mint SFU room / participant token for multi-track video
+      operationId: mintWebRtcToken
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/sessionId"
+      responses:
+        "200":
+          description: SFU join credentials (vendor-specific shape)
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /sessions/{sessionId}/recordings:
+    post:
+      tags: [recordings]
+      summary: Start or stop session recording
+      operationId: controlRecording
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/sessionId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [action]
+              properties:
+                action:
+                  type: string
+                  enum: [start, stop]
+      responses:
+        "200":
+          description: Recording state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordingState"
+
+  /sessions/{sessionId}/artifacts:
+    get:
+      tags: [artifacts]
+      summary: List exportable artifacts for the session
+      operationId: listArtifacts
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/sessionId"
+      responses:
+        "200":
+          description: Artifacts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Artifact"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    sessionId:
+      name: sessionId
+      in: path
+      required: true
+      schema:
+        type: string
+        example: sess_7f3a9c2d
+
+  schemas:
+    Session:
+      type: object
+      required: [id, state, safety_profile, robot_unit_id, studio_id]
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+          enum: [pending, active, ended, degraded]
+        safety_profile:
+          type: string
+        robot_unit_id:
+          type: string
+        studio_id:
+          type: string
+        started_at:
+          type: string
+          format: date-time
+        ended_at:
+          type: string
+          format: date-time
+        capabilities:
+          type: array
+          items:
+            type: string
+
+    RecordingState:
+      type: object
+      properties:
+        active:
+          type: boolean
+        started_at:
+          type: string
+          format: date-time
+
+    Artifact:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          example: bundle_manifest
+        download_url:
+          type: string
+          format: uri
+        sha256:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Bad request
+    NotFound:
+      description: Not found
