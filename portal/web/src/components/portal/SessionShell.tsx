@@ -2,6 +2,7 @@ import { rcShellInner } from "@/lib/portal/tokens";
 
 import { CameraGrid } from "./CameraGrid";
 import { ControlPanel } from "./ControlPanel";
+import { VideoRecordingPanel } from "./VideoRecordingPanel";
 import { LogPanel } from "./LogPanel";
 import { SessionHeader } from "./SessionHeader";
 import { SessionSidebar } from "./SessionSidebar";
@@ -39,7 +40,10 @@ export function SessionShell({ model }: Props) {
               </div>
             </div>
 
-            <ControlPanel modeLabel={model.controlModeLabel} />
+            <div className="flex min-w-0 flex-col gap-3">
+              <ControlPanel modeLabel={model.controlModeLabel} />
+              <VideoRecordingPanel />
+            </div>
           </div>
 
           <StatusFooter status={model.status} />
