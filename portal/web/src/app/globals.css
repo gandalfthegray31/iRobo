@@ -45,6 +45,12 @@
 
   --rc-terminal-bg: rgb(0 0 0 / 0.4);
   --rc-terminal-fg: #6ee7b7;
+
+  /* Handheld controller chrome */
+  --rc-controller-chassis: #0a0f1a;
+  --rc-controller-handle: #141a24;
+  --rc-controller-screen: #030508;
+  --rc-controller-bezel: #1e2533;
 }
 
 @theme inline {
@@ -94,6 +100,11 @@
 
   --color-rc-terminal-bg: var(--rc-terminal-bg);
   --color-rc-terminal-fg: var(--rc-terminal-fg);
+
+  --color-rc-controller-chassis: var(--rc-controller-chassis);
+  --color-rc-controller-handle: var(--rc-controller-handle);
+  --color-rc-controller-screen: var(--rc-controller-screen);
+  --color-rc-controller-bezel: var(--rc-controller-bezel);
 }
 
 body {
